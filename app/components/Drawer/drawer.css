@@ -1,0 +1,15 @@
+#drawer{
+  width: 18%;
+  height: 100vh;
+  border: 2px solid black;
+  position: relative;
+  /* display: none; */
+}
+.drawer-bck-img{
+  height: 20%;
+  width: 100%;
+  text-align: center;
+  background-image: url('https://images.pexels.com/photos/113338/pexels-photo-113338.jpeg?w=940&h=650&auto=compress&cs=tinysrgb');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

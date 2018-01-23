@@ -1,16 +1,18 @@
 *{
   margin: 0;
   padding: 0;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family:'Times New Roman', Times, serif;
 }
 header{
   height: 55px;
   margin: 8px;
+  z-index: 1000;
 }
 #top-wrapper{
   height: 55px;
   background-color: #E1BEE7;
   border-radius: 1px;
+  z-index: 1001;
 }
 #top-wrapper::after{
   content: " ";
@@ -18,17 +20,22 @@ header{
   z-index: 999;
   clear: both;
 }
-#logo{
+nav.left{
   float: left;
-  font-size: 20px;
-  margin-left: 10px;
+  width: 6%;
+  height: 100%;
+}
+nav > ul > li > span{
+  float: left;
+  display: none;
   line-height: 2.5;
 }
-nav{
+nav > ul > li#logo{
   float: right;
+  line-height: 2.5;
 }
-nav > span{
-  display: none;
+nav.right {
+  float: right;
 }
 nav > ul{
   list-style: none;
@@ -38,33 +45,67 @@ nav > ul > li{
   text-align: center;
   line-height: 2.5;
 }
-@media (max-width: 900px){
+#search{
+  margin: 10px 4px 0 0;
+  width: 350px;
+  padding: 7px;
+  background-color: white;
+  border-radius: 4px;
+}
+[type="search"]{
+  outline-offset: -22px;
+}
+nav > ul > li > img{
+  margin: 2px 10px;
+}
+nav > ul > li > .link{
+  display: block;
+  width: 90px;
+  font-size: 17px;
+  color: white;
+  text-decoration: none;
+}
+nav.right > ul > li > .link:hover{
+  border-bottom: 2px solid white;
+}
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+#user-mob-img{
+  display: none;
+  margin: 2px 10px;
+}
+@media (max-width: 901px){
   header{
     margin: 0;
   }
-  nav > ul{
+  nav.right > ul{
     display: none;
   }
-  nav > span{
-    display: block;
-    float: right;
-    margin-right: 10px;
+  nav.left{
+    width: 115px;
   }
-  nav{
-    width: 150px;
-    font-size: 20px;
+  nav.right > #user-mob-img{
+    display: block;
+    margin: 2px 10px;
     line-height: 2.5;
-    position: relative;
   }
-  nav:hover{
-    cursor: pointer;
+  nav.left > ul > li > span{
+    display: inline-block;
+    margin: 0px 8px 0px 8px;
+    font-size: 22px;
+    width: 30px;
+    text-align: center;
   }
-  nav:hover ul{
-    display: block;
-    width: 150px;
-    margin-top: 54px;
-    position: absolute;
-    background-color: #E1BEE7;    
+  nav.left > ul > li > span:hover{
+    background-color: grey;
+    cursor: pointer;    
+  }
+  nav > ul > li#logo{
+    margin: 3px 0px;
   }
 }
 
