@@ -1,0 +1,21 @@
+.slider-wrapper{
+  margin: 0px 8px 6px 8px;
+}
+#slider {
+  height: 570px;
+  background: #333;
+  overflow:hidden;
+}
+h1 {
+  font-size: 2em;
+  color: #eee;
+  display: inline-block;
+}
+a {
+  color: white;
+}
+p {
+  margin-top: 1em;
+  text-align: center;
+  color: #aaa;
+}

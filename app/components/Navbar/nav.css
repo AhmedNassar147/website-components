@@ -1,41 +1,44 @@
 *{
   margin: 0;
   padding: 0;
-  font-family:'Times New Roman', Times, serif;
 }
 header{
   height: 55px;
-  margin: 8px;
+  margin: 6px 8px;
   z-index: 1000;
 }
-#top-wrapper{
+#nav-wrapper{
   height: 55px;
   background-color: #E1BEE7;
   border-radius: 1px;
   z-index: 1001;
 }
-#top-wrapper::after{
+#nav-wrapper::after{
   content: " ";
   display: block;
-  z-index: 999;
   clear: both;
 }
 nav.left{
   float: left;
   width: 6%;
   height: 100%;
+  color: rgb(223, 211, 211);
 }
-nav > ul > li > span{
+nav.right {
+  float: right;
+  height: 100%;
+}
+nav.left > ul > li > span{
   float: left;
   display: none;
   line-height: 2.5;
 }
-nav > ul > li#logo{
+nav.left > ul > li#logo{
   float: right;
   line-height: 2.5;
 }
-nav.right {
-  float: right;
+nav > ul > li > #linkSiteName{
+  text-decoration: none;
 }
 nav > ul{
   list-style: none;
@@ -46,8 +49,8 @@ nav > ul > li{
   line-height: 2.5;
 }
 #search{
-  margin: 10px 4px 0 0;
-  width: 350px;
+  margin: 10px 8px 0 0;
+  width: 320px;
   padding: 7px;
   background-color: white;
   border-radius: 4px;
@@ -55,7 +58,7 @@ nav > ul > li{
 [type="search"]{
   outline-offset: -22px;
 }
-nav > ul > li > img{
+nav.right > ul > li > img{
   margin: 2px 10px;
 }
 nav > ul > li > .link{
@@ -67,6 +70,7 @@ nav > ul > li > .link{
 }
 nav.right > ul > li > .link:hover{
   border-bottom: 2px solid white;
+  color: rgb(194, 102, 102);
 }
 .avatar {
   vertical-align: middle;
@@ -80,7 +84,7 @@ nav.right > ul > li > .link:hover{
 }
 @media (max-width: 901px){
   header{
-    margin: 0;
+    margin-bottom: 2px;
   }
   nav.right > ul{
     display: none;
@@ -104,7 +108,7 @@ nav.right > ul > li > .link:hover{
     background-color: grey;
     cursor: pointer;    
   }
-  nav > ul > li#logo{
+  nav.left > ul > li#logo{
     margin: 3px 0px;
   }
 }
