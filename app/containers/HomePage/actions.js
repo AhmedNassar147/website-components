@@ -1,15 +1,8 @@
-/*
- *
- * HomePage actions
- *
- */
+import homeConstants from './constants';
+export default{
+  getSliderImages: (sliderImages) => ({
+    type: homeConstants.GET_SLIDER_IMAGES,
+    sliderImages,
+  }),
+};
 
-import {
-  DEFAULT_ACTION,
-} from './constants';
-
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}

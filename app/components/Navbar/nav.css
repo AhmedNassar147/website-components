@@ -84,7 +84,7 @@ nav.right > ul > li > .link:hover{
 }
 @media (max-width: 901px){
   header{
-    margin-bottom: 2px;
+    margin: 0px 9px 2px 0px;
   }
   nav.right > ul{
     display: none;

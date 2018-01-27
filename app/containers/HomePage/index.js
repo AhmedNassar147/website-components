@@ -6,62 +6,57 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectHomePage from './selectors';
+import { CircularProgress } from 'material-ui';
+import makeSelectHomePage, { makeSelectSliderImages } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import homeActions from './actions';
+import { sliderImages } from './data';
 import Navbar from '../../components/Navbar/index';
 import Slider from '../../components/Slider/index';
-const images = [
-  {
-    id: 1,
-    imgUrl: 'https://images.pexels.com/photos/515167/pexels-photo-515167.jpeg?w=940&h=650&auto=compress&cs=tinysrgb',
-    label: 'pic1',
-  },
-  {
-    id: 2,
-    imgUrl: 'https://images.pexels.com/photos/630835/pexels-photo-630835.jpeg?w=940&h=650&auto=compress&cs=tinysrgb',
-    label: 'pic2',
-  },
-  {
-    id: 3,
-    imgUrl: 'https://images.pexels.com/photos/515169/pexels-photo-515169.jpeg?w=940&h=650&auto=compress&cs=tinysrgb',
-    label: 'pic3',
-  },
-  {
-    id: 4,
-    imgUrl: 'https://images.pexels.com/photos/604897/pexels-photo-604897.jpeg?w=940&h=650&auto=compress&cs=tinysrgb',
-    label: 'pic4',
-  },
-  {
-    id: 5,
-    imgUrl: 'https://images.pexels.com/photos/423368/pexels-photo-423368.jpeg?w=940&h=650&auto=compress&cs=tinysrgb',
-    label: 'pic5',
-  },
-];
 export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentWillMount() {
+    setTimeout(() => {
+      this.props.getSliderImages(sliderImages);
+    }, 4000);
+  }
   render() {
+    const { images } = this.props;
     return (
       <div >
         <div>
           <Navbar />
-          <Slider timeInBetween={3000} images={images} />
+          <div>
+            {!(images && images.length > 0) ? (
+              <div style={LoadingComp}><CircularProgress thickness={6} size={80} color={'green'} /></div>
+            ) : (
+              <Slider timeInBetween={3000} images={images} />
+            )}
+          </div>
         </div>
       </div>
     );
   }
 }
 
+const LoadingComp = {
+  paddingTop: '10%',
+  textAlign: 'center',
+};
+
 HomePage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  getSliderImages: PropTypes.func.isRequired,
+  images: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
   homepage: makeSelectHomePage(),
+  images: makeSelectSliderImages(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    getSliderImages: () => dispatch(homeActions.getSliderImages(sliderImages)),
   };
 }
 

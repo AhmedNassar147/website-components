@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Paper } from 'material-ui';
 import './slider.css';
 
-let startCarouselInterval = null;
 class Slider extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
@@ -12,39 +10,23 @@ class Slider extends React.Component { // eslint-disable-line react/prefer-state
       imgIndex: 0,
     };
   }
-  componentDidMount() {
-    this.startCarousel();
+  componentWillMount() {
+    this.startSlider();
   }
-  componentWillUnmount() {
-    clearInterval(startCarouselInterval);
-  }
-  startCarousel = () => {
-    startCarouselInterval = setInterval(this.nextSlide, this.props.timeInBetween);
+  startSlider = () => {
+    setInterval(this.nextSlide, this.props.timeInBetween);
   }
   nextSlide = () => {
-    if (startCarouselInterval) {
-      clearInterval(startCarouselInterval);
-      setTimeout(() => {
-        startCarouselInterval = setInterval(this.nextSlide, this.props.timeInBetween);
-      }, 3000);
-    }
     if (this.state.imgIndex < this.state.sliderImages.length - 1) {
       this.setState({ imgIndex: this.state.imgIndex + 1 });
     } else {
       this.setState({ imgIndex: 0 });
     }
   }
-  prevSlide = () => {
-    if (this.state.imgIndex !== 0) {
-      this.setState({ imgIndex: this.state.imgIndex - 1 });
-    } else {
-      this.setState({ imgIndex: this.state.sliderImages.length - 1 });
-    }
-  }
   render() {
-    const { sliderImages } = this.state;
+    const { sliderImages, imgIndex } = this.state;
     const carouselImages = sliderImages.map((image) => {
-      if (image.id === this.state.imgIndex) {
+      if (image.id === imgIndex) {
         return (
           <div id="slider" key={image.id}>
             <img alt={image.label} src={image.imgUrl} width="100%" height="100%" />
@@ -54,11 +36,10 @@ class Slider extends React.Component { // eslint-disable-line react/prefer-state
       return true;
     }
   );
-    if (sliderImages.length === 0) return null;
     return (
-      <Paper className="slider-wrapper">
-        {carouselImages}
-      </Paper>
+      <section>
+        <div style={{ height: '100%' }}>{carouselImages}</div>
+      </section>
     );
   }
 }

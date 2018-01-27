@@ -73,3 +73,20 @@
 // };
 
 // export default CarouselImage;
+
+ // prevSlide = () => {
+  //   if (this.state.imgIndex !== 0) {
+  //     this.setState({ imgIndex: this.state.imgIndex - 1 });
+  //   } else {
+  //     this.setState({ imgIndex: this.state.sliderImages.length - 1 });
+  //   }
+  // }
+  // componentWillUnmount() {
+  //   clearInterval(startSliderInterval);
+  // }
+  // if (startSliderInterval) {
+  //   clearInterval(startSliderInterval);
+  //   setTimeout(() => {
+  //     startSliderInterval = setInterval(this.nextSlide, this.props.timeInBetween);
+  //   }, 3000);
+  // }

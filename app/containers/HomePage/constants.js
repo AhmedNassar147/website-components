@@ -1,7 +1,3 @@
-/*
- *
- * HomePage constants
- *
- */
-
-export const DEFAULT_ACTION = 'app/HomePage/DEFAULT_ACTION';
+export default{
+  GET_SLIDER_IMAGES: 'GET_SLIDER_IMAGES',
+};

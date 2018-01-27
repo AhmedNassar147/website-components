@@ -1,20 +1,17 @@
-/*
- *
- * HomePage reducer
- *
- */
-
 import { fromJS } from 'immutable';
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import homeConstants from './constants';
 
-const initialState = fromJS({});
+const initialState = fromJS({
+  sliderImages: {},
+});
 
 function homePageReducer(state = initialState, action) {
+  // const oldState = state.toJS();
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case homeConstants.GET_SLIDER_IMAGES:
+      return state.merge({
+        sliderImages: action.sliderImages,
+      });
     default:
       return state;
   }

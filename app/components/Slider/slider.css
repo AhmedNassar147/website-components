@@ -1,10 +1,11 @@
-.slider-wrapper{
+section{
   margin: 0px 8px 6px 8px;
+  height: 570px;  
 }
 #slider {
-  height: 570px;
   background: #333;
   overflow:hidden;
+  height: 100%;
 }
 h1 {
   font-size: 2em;
@@ -18,4 +19,10 @@ p {
   margin-top: 1em;
   text-align: center;
   color: #aaa;
+}
+@media (max-width: 901px){
+  section{
+    margin: 0px 9px 2px 0px;
+    height: 700px;
+  }
 }
